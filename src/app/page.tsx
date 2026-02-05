@@ -28,21 +28,39 @@ function IntroSummary() {
     );
 }
 
+function RoleFocus() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector I: Role / Focus</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Systems Engineering & Design, Computer Science + Economics @ UIUC</h2>
+            <p className="text-[#6B6054] text-xl leading-relaxed border-l-2 border-[#C77D63] pl-6">
+                Building human-centered tech at the intersection of engineering, design, and business.
+            </p>
+        </div>
+    );
+}
+
+function MissionStatement() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector II: Mission Statement</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Impact Through Design</h2>
+            <p className="text-[#6B6054] text-xl leading-relaxed">
+                Design technology that actually helps people — blending engineering rigor, thoughtful design, and real-world impact to build solutions that are practical, scalable, and human-first.
+            </p>
+        </div>
+    );
+}
+
 function EducationContent() {
     return (
         <div className="flex flex-col justify-center h-full space-y-8">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector I: Education</span>
-            <h2 className="text-3xl md:text-4xl text-[#4A3B32] font-serif">University of Illinois at Urbana-Champaign</h2>
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector III: Education</span>
+            <h2 className="text-3xl md:text-4xl text-[#4A3B32] font-serif">University of Illinois Urbana-Champaign</h2>
             <div className="text-[#6B6054] leading-relaxed">
-                <p className="font-bold">Bachelor of Science, Systems Engineering & Design and Computer Science + Economics</p>
-                <p className="text-sm italic mb-4">Aug 2025 - May 2029</p>
-                <p className="mb-2"><strong>Relevant Coursework:</strong> Business Side of Engineering, Technical Entrepreneurship, Discrete Structures</p>
-                <p><strong>Activities:</strong> Off-Road Illini Baja SAE, Hive Society Improv Team, Sky Campus Happiness Volunteer</p>
-            </div>
-            <div className="border-t border-[#4A3B32]/10 pt-4 mt-4">
-                 <h3 className="text-xl text-[#4A3B32] font-serif mb-2">Frisco High School</h3>
-                 <p className="text-[#6B6054] text-sm">GPA 4.0 | Aug 2021 - May 2025</p>
-                 <p className="text-[#6B6054] text-sm mt-1">Activities: FIRST Robotics Competition (FRC) Radicubs, Model United Nations, Badminton Club</p>
+                <p className="font-bold">B.S. Systems Engineering & Design + Computer Science & Economics</p>
+                <p className="mb-4 mt-4"><strong>Relevant Coursework:</strong> Technological Entrepreneurship • Discrete Structures • Business Side of Engineering</p>
+                <p><strong>Activities:</strong> Baja SAE • Hive Society Improv • SKY Campus Happiness</p>
             </div>
         </div>
     );
@@ -51,90 +69,138 @@ function EducationContent() {
 function SkillsContent() {
     return (
         <div className="flex flex-col justify-center h-full space-y-8">
-             <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector II: Skills</span>
+             <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector IV: Skills</span>
              <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Technical Arsenal</h2>
-             <div className="grid grid-cols-2 gap-4 text-sm">
+             <div className="grid grid-cols-1 gap-6 text-sm">
                 <div className="p-4 border border-[#4A3B32]/10 rounded-sm">
                     <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-wider">Languages</h3>
-                    <p className="text-[#6B6054]">Python, Java, C++, JavaScript, HTML, React, TypeScript, Kotlin</p>
+                    <p className="text-[#6B6054]">Python, Java, C++, React, TypeScript, HTML</p>
                 </div>
                 <div className="p-4 border border-[#4A3B32]/10 rounded-sm">
-                    <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-wider">Frameworks & Tools</h3>
-                    <p className="text-[#6B6054]">Certified Microsoft Office Specialist Expert, Fusion, MATLAB, Market & Cost Analysis</p>
+                    <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-wider">Tools</h3>
+                    <p className="text-[#6B6054]">Fusion 360, CAD, Prototyping, Market & Cost Analysis, React Native</p>
                 </div>
-                <div className="p-4 border border-[#4A3B32]/10 rounded-sm col-span-2">
+                <div className="p-4 border border-[#4A3B32]/10 rounded-sm">
+                    <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-wider">Business Models</h3>
+                    <p className="text-[#6B6054]">Certified Microsoft Office Specialist Expert (Excel, PowerPoint), product strategy, presentations</p>
+                </div>
+                <div className="p-4 border border-[#4A3B32]/10 rounded-sm">
                     <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-wider">Spoken Languages</h3>
-                    <p className="text-[#6B6054]">English, Spanish (basic), Gujarati (fluent), Hindi (basic), French (beginner)</p>
+                    <p className="text-[#6B6054]">Gujarati (fluent), English, Spanish (basic)</p>
                 </div>
              </div>
         </div>
     );
 }
 
-function ExperienceAutodesk() {
+function ExperienceHighlights() {
     return (
         <div className="flex flex-col justify-center h-full space-y-6">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector III: Experience</span>
-            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Autodesk</h2>
-            <p className="text-sm font-sans uppercase tracking-widest text-[#8D6E63]">Autodesk Ambassador | Hybrid | June 2025 - Present</p>
-            <ul className="list-disc list-outside ml-5 text-[#6B6054] space-y-2">
-                <li>Administered in-class workshops & tabling events locally, presented students with Autodesk resources and swag</li>
-                <li>Facilitated coachings & presentations in Fusion, Sketchbook, AutoCAD</li>
-            </ul>
-        </div>
-    );
-}
-
-function ExperienceRobotics() {
-    return (
-        <div className="flex flex-col justify-center h-full space-y-6">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector IV: Experience</span>
-            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">FIRST Robotics Team 7503</h2>
-            <p className="text-sm font-sans uppercase tracking-widest text-[#8D6E63]">Mechanical Team Member and Programmer | Frisco, TX | Jun 2023 - May 2025</p>
-             <ul className="list-disc list-outside ml-5 text-[#6B6054] space-y-2">
-                <li>Built and assembled competition robots using Fusion, machining tools, and hand fabrication</li>
-                <li>Wired electrical boards and programmed robot systems for movement and sensor functions</li>
-            </ul>
-        </div>
-    );
-}
-
-function ExperienceInternships() {
-    return (
-        <div className="flex flex-col justify-center h-full space-y-6">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector V: Experience</span>
-            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">BSB Design & Abbott</h2>
-            
-            <div className="mb-4">
-                <h3 className="text-xl text-[#4A3B32] font-bold">BSB Design - Job Shadow Intern</h3>
-                <p className="text-xs text-[#8D6E63] mb-1">Jul 2024 - Aug 2024</p>
-                <p className="text-sm text-[#6B6054]">Observed architects, CAD workflows. Acquired knowledge in design revisions and 2D modeling.</p>
-            </div>
-
-            <div>
-                <h3 className="text-xl text-[#4A3B32] font-bold">Abbott - Independent Study</h3>
-                <p className="text-xs text-[#8D6E63] mb-1">Jan 2024 - May 2024</p>
-                <p className="text-sm text-[#6B6054]">Studied thermodynamic systems. Pioneered a digital simulation of a 4-stroke Internal Combustion Engine on Fusion.</p>
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector V: Experience Highlights</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Key Roles</h2>
+            <div className="space-y-6">
+                <div>
+                    <h3 className="text-xl text-[#4A3B32] font-bold">Autodesk Ambassador</h3>
+                    <p className="text-[#6B6054] text-sm">Led workshops teaching Fusion & AutoCAD</p>
+                </div>
+                <ul className="list-disc list-outside ml-5 text-[#6B6054] space-y-2">
+                    <li>Built + programmed competition robots (FRC)</li>
+                    <li>Engine simulation research with Abbott mentorship</li>
+                    <li>Hands-on operations & customer leadership roles</li>
+                </ul>
+                <div className="pt-4">
+                    <Link 
+                        href="/projects" 
+                        className="inline-flex items-center gap-2 text-[#C77D63] hover:text-[#4A3B32] transition-colors font-serif italic"
+                    >
+                        <span>View Detailed Projects</span>
+                        <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                </div>
             </div>
         </div>
     );
 }
 
-function ProjectsLink() {
+function GoalsContent() {
     return (
         <div className="flex flex-col justify-center h-full space-y-8">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector VI: Projects</span>
-            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Selected Works</h2>
-            <p className="text-[#6B6054] max-w-md text-lg">
-                Explore a collection of my technical projects, research, and product designs.
-            </p>
-            <Link 
-                href="/projects" 
-                className="flex items-center gap-3 bg-[#4A3B32] text-[#F9F7F2] px-8 py-4 w-fit hover:bg-[#C77D63] transition-colors"
-            >
-                <span className="text-sm font-sans uppercase tracking-widest">View All Projects</span>
-                <ArrowUpRight className="w-5 h-5" />
-            </Link>
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector VI: Goals</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Aspirations</h2>
+            <div className="space-y-6">
+                <div className="p-6 border-l-2 border-[#C77D63] bg-[#4A3B32]/5">
+                    <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-widest text-xs">Short Term</h3>
+                    <p className="text-[#6B6054] text-lg">Ship impactful projects, gain industry experience, deepen technical mastery</p>
+                </div>
+                <div className="p-6 border-l-2 border-[#4A3B32] bg-[#C77D63]/10">
+                    <h3 className="text-[#4A3B32] font-bold mb-2 uppercase tracking-widest text-xs">Long Term</h3>
+                    <p className="text-[#6B6054] text-lg">Build products or startups that merge engineering, design, & accessibility</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function InterestsContent() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector VII: Interests</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Passions</h2>
+            <div className="flex flex-wrap gap-3">
+                {["Robotics", "Product design", "Startups", "Human-centered tech", "Wellness & mindfulness"].map((interest) => (
+                    <span key={interest} className="px-4 py-2 border border-[#4A3B32]/20 rounded-full text-[#6B6054] hover:bg-[#4A3B32] hover:text-[#F9F7F2] transition-colors cursor-default">
+                        {interest}
+                    </span>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function ValuesContent() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector VIII: Values</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Core Principles</h2>
+            <div className="grid grid-cols-1 gap-4">
+                {["Curiosity", "Empathy", "Execution", "Creativity", "Impact"].map((value, i) => (
+                    <div key={value} className="flex items-center gap-4">
+                        <span className="text-[#C77D63] font-serif italic text-xl">0{i+1}</span>
+                        <span className="text-2xl md:text-3xl text-[#4A3B32]">{value}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function CurrentlyContent() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector IX: Currently</span>
+            <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">In Progress</h2>
+            <div className="space-y-4 text-xl text-[#6B6054]">
+                <p className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#C77D63]"></span> Learning embedded systems
+                </p>
+                <p className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#C77D63]"></span> Designing hardware + software prototypes
+                </p>
+                <p className="flex items-center gap-3">
+                    <span className="w-2 h-2 rounded-full bg-[#C77D63]"></span> Exploring tech-for-wellbeing ideas
+                </p>
+            </div>
+        </div>
+    );
+}
+
+function MottoContent() {
+    return (
+        <div className="flex flex-col justify-center h-full space-y-8">
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector X: Motto</span>
+            <blockquote className="text-4xl md:text-6xl text-[#4A3B32] font-serif italic leading-tight">
+                "Your soul knows when it's on to something."
+            </blockquote>
         </div>
     );
 }
@@ -142,11 +208,11 @@ function ProjectsLink() {
 function ContactContent() {
     return (
         <div className="flex flex-col justify-center h-full space-y-8">
-            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector VII: Contact</span>
+            <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector XI: Contact</span>
             <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Get in Touch</h2>
             <div className="grid gap-6">
-                <a href="mailto:aashis3@illinois.edu" className="flex items-center gap-4 text-xl text-[#6B6054] hover:text-[#C77D63] transition-colors">
-                    <Mail className="w-6 h-6" /> aashis3@illinois.edu
+                <a href="mailto:aashi.shah.102@gmail.com" className="flex items-center gap-4 text-xl text-[#6B6054] hover:text-[#C77D63] transition-colors">
+                    <Mail className="w-6 h-6" /> aashi.shah.102@gmail.com
                 </a>
                 <a href="tel:650-740-0357" className="flex items-center gap-4 text-xl text-[#6B6054] hover:text-[#C77D63] transition-colors">
                     <span className="w-6 h-6 flex items-center justify-center font-bold">#</span> 650-740-0357
@@ -159,31 +225,21 @@ function ContactContent() {
     );
 }
 
-function ResumeContent() {
-    return (
-        <div className="flex flex-col justify-center h-full space-y-8">
-             <span className="text-xs font-sans uppercase tracking-[0.3em] text-[#C77D63]">Sector XI: Data</span>
-             <h2 className="text-4xl md:text-5xl text-[#4A3B32] font-serif">Curriculum Vitae</h2>
-             <p className="text-[#6B6054] max-w-md">
-                A chronological record of builds, failures, and lessons learned.
-             </p>
-             <button className="flex items-center gap-3 bg-[#4A3B32] text-[#F9F7F2] px-8 py-4 w-fit hover:bg-[#C77D63] transition-colors">
-                <Download className="w-5 h-5" />
-                <span className="text-sm font-sans uppercase tracking-widest">Download PDF</span>
-             </button>
-        </div>
-    );
-}
+
 
 const ASPECTS = [
   { id: 0, label: "XII", component: IntroSummary },
-  { id: 1, label: "I", component: EducationContent },
-  { id: 2, label: "II", component: SkillsContent },
-  { id: 3, label: "III", component: ExperienceAutodesk },
-  { id: 4, label: "IV", component: ExperienceRobotics },
-  { id: 5, label: "V", component: ExperienceInternships },
-  { id: 6, label: "VI", component: ProjectsLink },
-  { id: 7, label: "VII", component: ContactContent },
+  { id: 1, label: "I", component: RoleFocus },
+  { id: 2, label: "II", component: MissionStatement },
+  { id: 3, label: "III", component: EducationContent },
+  { id: 4, label: "IV", component: SkillsContent },
+  { id: 5, label: "V", component: ExperienceHighlights },
+  { id: 6, label: "VI", component: GoalsContent },
+  { id: 7, label: "VII", component: InterestsContent },
+  { id: 8, label: "VIII", component: ValuesContent },
+  { id: 9, label: "IX", component: CurrentlyContent },
+  { id: 10, label: "X", component: MottoContent },
+  { id: 11, label: "XI", component: ContactContent },
 ];
 
 export default function Home() {
