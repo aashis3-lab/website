@@ -22,7 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aashi Shah | The Desert Horizon",
+  title: "Aashi Shah",
   description: "Entrepreneur, Builder, Storyteller.",
 };
 

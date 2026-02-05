@@ -8,33 +8,33 @@ import { ArrowUpRight } from "lucide-react";
 const projects = [
   {
     id: "01",
-    title: "Venture ONE",
-    category: "Fintech Dashboard",
-    description: "A comprehensive dashboard for early-stage startups to track metrics and investor relations. Redefining how founders visualize growth through intuitive data landscapes.",
-    tags: ["Next.js", "Tailwind", "Supabase"],
+    title: "Dozed",
+    category: "Embedded Systems",
+    description: "A sleep-aware system with wearable PPG sensor and Raspberry Pi alarm triggering adaptive light/audio wake sequences. Led market research & cost analysis to evaluate product feasibility.",
+    tags: ["Raspberry Pi", "Python", "Sensors", "Market Analysis"],
     link: "#",
     year: "2024",
-    color: "bg-sand", // Sand
+    color: "bg-[#4A3B32]", // Dark brown/Dusk
   },
   {
     id: "02",
-    title: "MarketPulse",
-    category: "AI Analysis",
-    description: "Real-time market sentiment analysis tool using NLP to predict micro-trends. Decoding the noise of the market into actionable, clear signals.",
-    tags: ["Python", "React", "OpenAI"],
+    title: "Titanium Dioxide Research",
+    category: "Nanomaterials Research",
+    description: "Conducted analysis on structural properties of titanium dioxide nanoparticles and their impact on material strength and performance. Published in Curieux Academic Journal.",
+    tags: ["Research", "Nanomaterials", "Data Analysis"],
     link: "#",
     year: "2023",
-    color: "bg-terracotta", // Terracotta
+    color: "bg-[#C77D63]", // Terracotta
   },
   {
     id: "03",
-    title: "Community Connect",
-    category: "Social Platform",
-    description: "Mobile-first application designed to foster local community engagement. Bridging the digital divide to bring neighborhoods back together.",
-    tags: ["React Native", "Firebase"],
+    title: "PortaProfile",
+    category: "Product Design",
+    description: "Developed a modular smart business card integrating QR and RFID technology for seamless professional networking. 2nd Place, Illinois Product Design Competition.",
+    tags: ["Product Design", "RFID", "Cost Analysis"],
     link: "#",
-    year: "2023",
-    color: "bg-dusk", // Dusk
+    year: "2024",
+    color: "bg-[#EFEBE9]", // Sand/Light
   }
 ];
 
@@ -82,17 +82,17 @@ const ProjectItem = ({ project, index }: { project: typeof projects[0], index: n
       {/* Project Details */}
       <div className={`md:col-span-5 flex flex-col justify-center ${isEven ? "md:order-2 pl-4" : "md:order-1 pr-4"}`}>
         <div className="flex items-center gap-4 mb-6">
-          <span className="h-[1px] w-12 bg-terracotta/60"></span>
-          <span className="text-terracotta font-sans uppercase tracking-widest text-xs font-medium">
+          <span className="h-[1px] w-12 bg-[#C77D63]/60"></span>
+          <span className="text-[#C77D63] font-sans uppercase tracking-widest text-xs font-medium">
             {project.category} — {project.year}
           </span>
         </div>
 
-        <h2 className="text-5xl md:text-6xl font-serif text-night mb-8 leading-[0.9]">
+        <h2 className="text-5xl md:text-6xl font-serif text-[#4A3B32] mb-8 leading-[0.9]">
           {project.title}
         </h2>
 
-        <p className="text-stone text-lg leading-relaxed mb-8 max-w-md">
+        <p className="text-[#6B6054] text-lg leading-relaxed mb-8 max-w-md">
           {project.description}
         </p>
 
@@ -100,7 +100,7 @@ const ProjectItem = ({ project, index }: { project: typeof projects[0], index: n
           {project.tags.map((tag) => (
             <span 
               key={tag} 
-              className="px-4 py-1.5 border border-stone/30 rounded-full text-xs font-sans text-stone uppercase tracking-wide"
+              className="px-4 py-1.5 border border-[#4A3B32]/30 rounded-full text-xs font-sans text-[#4A3B32] uppercase tracking-wide"
             >
               {tag}
             </span>
@@ -110,9 +110,9 @@ const ProjectItem = ({ project, index }: { project: typeof projects[0], index: n
         <Link 
           href={project.link}
           data-cursor="View Project"
-          className="group inline-flex items-center gap-3 text-night font-serif italic text-xl hover:text-terracotta transition-colors duration-300"
+          className="group inline-flex items-center gap-3 text-[#4A3B32] font-serif italic text-xl hover:text-[#C77D63] transition-colors duration-300"
         >
-          <span>View Case Study</span>
+          <span>View Details</span>
           <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
         </Link>
       </div>
@@ -151,8 +151,8 @@ export default function Projects() {
           <div className="text-[#6B6054] font-sans text-sm uppercase tracking-widest">
             01 — Projects
           </div>
-          <Link href="/blog" className="text-4xl md:text-6xl font-serif text-[#4A3B32]/50 hover:text-[#4A3B32] transition-colors duration-500">
-            Next: Blog <span className="text-[#BC6C4A]">→</span>
+          <Link href="/" className="text-4xl md:text-6xl font-serif text-[#4A3B32]/50 hover:text-[#4A3B32] transition-colors duration-500">
+            Back: Home <span className="text-[#BC6C4A]">→</span>
           </Link>
         </div>
       </div>

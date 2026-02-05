@@ -20,8 +20,9 @@ const SECTIONS = {
         </p>
       </>
     ),
-    hex: "#FAF9F6", // Pearl
-    accent: "text-terracotta"
+    hex: "#F2EFE9", // Light (Bone)
+    textColor: "text-[#231F1C]",
+    accent: "text-[#8C7B75]"
   },
   Philosophy: {
     title: "The Philosophy",
@@ -34,14 +35,15 @@ const SECTIONS = {
           { title: "Built for the long term", desc: "Code that endures, scales, and adapts like stone in the wind." }
         ].map((item, i) => (
           <li key={i} className="flex flex-col">
-            <span className="text-xl font-serif text-terracotta mb-1">{item.title}</span>
-            <span className="text-foreground font-sans opacity-80">{item.desc}</span>
+            <span className="text-xl font-serif mb-1 opacity-90">{item.title}</span>
+            <span className="font-sans opacity-70">{item.desc}</span>
           </li>
         ))}
       </ul>
     ),
-    hex: "#E6E2D8", // Sand
-    accent: "text-gold"
+    hex: "#231F1C", // Dark (Obsidian)
+    textColor: "text-[#F2EFE9]",
+    accent: "text-[#A68A64]"
   },
   Bio: {
     title: "The Bio",
@@ -52,9 +54,9 @@ const SECTIONS = {
           I am Aashi Shah, a product creator based in the digital ether. With a background in engineering, economics, & computer science and a passion for human-centered design, I create startups addressing real issues.
         </p>
         <p className="mb-6">
-          Currently building [Current Venture] and exploring the future of [Interest].
+          Currently building immersive web experiences and exploring the future of generative interfaces.
         </p>
-        <div className="flex flex-wrap gap-4 text-xs font-sans uppercase tracking-widest text-terracotta">
+        <div className="flex flex-wrap gap-4 text-xs font-sans uppercase tracking-widest opacity-80">
             <span>Next.js Expert</span>
             <span>•</span>
             <span>UI/UX Designer</span>
@@ -63,8 +65,9 @@ const SECTIONS = {
         </div>
       </>
     ),
-    hex: "#D1CBC1", // Stone
-    accent: "text-terracotta"
+    hex: "#8C7B75", // Medium (Clay)
+    textColor: "text-[#F2EFE9]",
+    accent: "text-[#231F1C]"
   }
 };
 
@@ -75,9 +78,9 @@ export default function About() {
   return (
     <motion.div 
       initial={false}
-      animate={{ backgroundColor: data.hex }}
+      animate={{ backgroundColor: data.hex, color: data.hex === "#231F1C" ? "#F2EFE9" : (data.hex === "#8C7B75" ? "#F2EFE9" : "#231F1C") }}
       transition={{ duration: 0.8 }}
-      className="min-h-screen relative flex flex-col transition-colors duration-1000 overflow-hidden text-foreground"
+      className={`min-h-screen relative flex flex-col transition-colors duration-1000 overflow-hidden ${data.textColor}`}
     >
       {/* Background Shapes */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none overflow-hidden">

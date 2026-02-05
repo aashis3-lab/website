@@ -2,127 +2,148 @@
 
 import { useEffect, useRef } from "react";
 
-interface Particle {
-  x: number;
-  y: number;
-  originX: number;
-  originY: number;
-  color: string;
-  size: number;
-  vx: number;
-  vy: number;
-  ease: number;
-}
+  interface Particle {
+    x: number;
+    y: number;
+    color: string;
+    size: number;
+    vx: number;
+    vy: number;
+  }
 
-export default function ReactiveSand() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const mouse = useRef({ x: 0, y: 0 });
-  const particles = useRef<Particle[]>([]);
-  const animationFrameId = useRef<number>(0);
+  export default function ReactiveSand() {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const mouse = useRef({ x: 0, y: 0 });
+    const particles = useRef<Particle[]>([]);
+    const animationFrameId = useRef<number>(0);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const container = containerRef.current;
-    if (!canvas || !container) return;
+    useEffect(() => {
+      const canvas = canvasRef.current;
+      const container = containerRef.current;
+      if (!canvas || !container) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
 
-    let width = 0;
-    let height = 0;
-    const gap = 30; // Distance between particles
-    const radius = 1.5; // Size of particles
+      let width = 0;
+      let height = 0;
+      const radius = 1.5; // Size of particles
 
-    const colors = ["#E0DCD3", "#6B6054", "#8C5E58"]; // Sand, Dusk, Terracotta (Updated Palette)
+      const colors = ["#E0DCD3", "#6B6054", "#8C5E58"]; // Sand, Dusk, Terracotta (Updated Palette)
 
-    const initParticles = () => {
-      particles.current = [];
-      width = container.offsetWidth;
-      height = container.offsetHeight;
-      canvas.width = width;
-      canvas.height = height;
+      const initParticles = () => {
+        particles.current = [];
+        width = container.offsetWidth;
+        height = container.offsetHeight;
+        canvas.width = width;
+        canvas.height = height;
 
-      for (let x = 0; x < width; x += gap) {
-        for (let y = 0; y < height; y += gap) {
-          // Add some randomness to initial position
-          const dx = (Math.random() - 0.5) * 10;
-          const dy = (Math.random() - 0.5) * 10;
-          const particleX = x + dx;
-          const particleY = y + dy;
-          
+        const particleCount = Math.floor((width * height) / 1000); // Adjust density
+
+        for (let i = 0; i < particleCount; i++) {
           particles.current.push({
-            x: particleX,
-            y: particleY,
-            originX: particleX,
-            originY: particleY,
+            x: Math.random() * width,
+            y: Math.random() * height,
             color: colors[Math.floor(Math.random() * colors.length)],
             size: Math.random() * radius + 0.5,
-            vx: 0,
-            vy: 0,
-            ease: Math.random() * 0.1 + 0.05, // Random ease for organic movement
+            vx: (Math.random() - 0.5) * 0.5, // Gentle float velocity
+            vy: (Math.random() - 0.5) * 0.5,
           });
         }
-      }
-    };
-
-    const handleResize = () => {
-      initParticles();
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
       };
-    };
 
-    const animate = () => {
-      ctx.clearRect(0, 0, width, height);
-      
-      particles.current.forEach((p) => {
-        // Calculate distance from mouse
-        const dx = mouse.current.x - p.x;
-        const dy = mouse.current.y - p.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const forceDistance = 150; // Radius of influence
-        const force = Math.max(0, forceDistance - distance); // Stronger when closer
+      const handleResize = () => {
+        initParticles();
+      };
 
-        // Angle away from mouse
-        const angle = Math.atan2(dy, dx);
+      const handleMouseMove = (e: MouseEvent) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.current = {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        };
+      };
+
+      const animate = () => {
+        ctx.clearRect(0, 0, width, height);
         
-        // Target position (push away from mouse + return to origin)
-        // If mouse is close, push away. If far, return to origin.
-        let targetX = p.originX;
-        let targetY = p.originY;
+        const nearbyParticles: Particle[] = [];
+        const connectionRadius = 180; // Radius around mouse to form shapes
 
-        if (distance < forceDistance) {
-           const pushFactor = force / 15; // Power of the push
-           targetX -= Math.cos(angle) * pushFactor;
-           targetY -= Math.sin(angle) * pushFactor;
-        }
+        particles.current.forEach((p) => {
+          // Move particles
+          p.x += p.vx;
+          p.y += p.vy;
 
-        // Physics: Move towards target
-        p.vx += (targetX - p.x) * p.ease;
-        p.vy += (targetY - p.y) * p.ease;
-        
-        // Friction
-        p.vx *= 0.9;
-        p.vy *= 0.9;
+          // Boundary check (bounce)
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
 
-        p.x += p.vx;
-        p.y += p.vy;
+          // Calculate distance from mouse for constellation effect
+          const dx = mouse.current.x - p.x;
+          const dy = mouse.current.y - p.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Draw
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
-        ctx.fill();
-      });
+          // Interaction with mouse (gentle attraction)
+          const forceRadius = 200; // Increased radius for better gathering
+          if (distance < forceRadius) {
+            const force = (forceRadius - distance) / forceRadius; // 0 to 1
+            const angle = Math.atan2(dy, dx);
+            const pullX = Math.cos(angle) * force * 0.15; // Pull towards
+            const pullY = Math.sin(angle) * force * 0.15;
+            
+            p.vx += pullX;
+            p.vy += pullY;
+          }
 
-      animationFrameId.current = requestAnimationFrame(animate);
-    };
+          // Limit velocity
+          const maxSpeed = 2;
+          const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          if (speed > maxSpeed) {
+            p.vx = (p.vx / speed) * maxSpeed;
+            p.vy = (p.vy / speed) * maxSpeed;
+          }
+
+          // Damping (optional, keeps them from accelerating forever)
+          p.vx *= 0.99;
+          p.vy *= 0.99;
+
+          // Collect particles for connections
+          if (distance < connectionRadius) {
+              nearbyParticles.push(p);
+          }
+
+          // Draw Particle
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+        });
+
+        // Draw Geometric Connections
+        nearbyParticles.forEach((p1, i) => {
+          for (let j = i + 1; j < nearbyParticles.length; j++) {
+              const p2 = nearbyParticles[j];
+              const dx = p1.x - p2.x;
+              const dy = p1.y - p2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              const maxLinkDist = 60; // Max distance to connect particles
+
+              if (dist < maxLinkDist) {
+                  ctx.beginPath();
+                  ctx.moveTo(p1.x, p1.y);
+                  ctx.lineTo(p2.x, p2.y);
+                  const opacity = (1 - dist / maxLinkDist) * 0.3;
+                  ctx.strokeStyle = `rgba(140, 94, 88, ${opacity})`; // Terracotta
+                  ctx.lineWidth = 0.5;
+                  ctx.stroke();
+              }
+          }
+        });
+
+        animationFrameId.current = requestAnimationFrame(animate);
+      };
 
     window.addEventListener("resize", handleResize);
     window.addEventListener("mousemove", handleMouseMove);
